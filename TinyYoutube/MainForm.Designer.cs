@@ -28,25 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.searchText = new System.Windows.Forms.TextBox();
+            this.resultPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // searchText
+            // 
+            this.searchText.BackColor = System.Drawing.Color.White;
+            this.searchText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchText.Location = new System.Drawing.Point(0, 0);
+            this.searchText.Margin = new System.Windows.Forms.Padding(5);
+            this.searchText.Multiline = true;
+            this.searchText.Name = "searchText";
+            this.searchText.Size = new System.Drawing.Size(360, 20);
+            this.searchText.TabIndex = 0;
+            this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChangedAsync);
+            // 
+            // resultPanel
+            // 
+            this.resultPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.resultPanel.Location = new System.Drawing.Point(0, 20);
+            this.resultPanel.Name = "resultPanel";
+            this.resultPanel.Size = new System.Drawing.Size(360, 200);
+            this.resultPanel.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 214);
+            this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.resultPanel);
+            this.Controls.Add(this.searchText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.TopMost = true;
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
+            this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox searchText;
+        private System.Windows.Forms.Panel resultPanel;
     }
 }
 

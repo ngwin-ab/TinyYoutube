@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.searchText = new System.Windows.Forms.TextBox();
-            this.resultPanel = new System.Windows.Forms.Panel();
+            this.viewer = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // searchText
@@ -46,13 +46,15 @@
             this.searchText.TabIndex = 0;
             this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChangedAsync);
             // 
-            // resultPanel
+            // viewer
             // 
-            this.resultPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.resultPanel.Location = new System.Drawing.Point(0, 20);
-            this.resultPanel.Name = "resultPanel";
-            this.resultPanel.Size = new System.Drawing.Size(360, 200);
-            this.resultPanel.TabIndex = 1;
+            this.viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewer.Location = new System.Drawing.Point(0, 20);
+            this.viewer.MinimumSize = new System.Drawing.Size(20, 20);
+            this.viewer.Name = "viewer";
+            this.viewer.ScrollBarsEnabled = false;
+            this.viewer.Size = new System.Drawing.Size(360, 200);
+            this.viewer.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -60,7 +62,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
-            this.Controls.Add(this.resultPanel);
+            this.Controls.Add(this.viewer);
             this.Controls.Add(this.searchText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
@@ -78,7 +80,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchText;
-        private System.Windows.Forms.Panel resultPanel;
+        private System.Windows.Forms.WebBrowser viewer;
     }
 }
 

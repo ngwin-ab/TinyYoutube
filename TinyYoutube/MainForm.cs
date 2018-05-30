@@ -11,6 +11,7 @@ using Microsoft.Win32;
 using System.Diagnostics;
 
 using TinyYoutube.Youtube;
+using YoutubeListView;
 
 namespace TinyYoutube
 {
@@ -151,14 +152,33 @@ namespace TinyYoutube
 
         private async void searchText_TextChangedAsync(object sender, EventArgs e)
         {
+            y2bList.Visible = true;
             var searchTextStr = searchText.Text.Trim().ToLower();
             await searcher.search(searchTextStr, 20);
         }
 
         void videoListUpdated(List<VideoInfo> videos)
         {
+            y2bList.Clear();
+            foreach (VideoInfo info in videos)
+            {
+                YoutubeItem item = new YoutubeItem();
+                item.Title = info.Title;
+                item.Description = info.Description;
+                item.Duration = info.Duration;
+                // item.Image = Utils.readImageFromUrl(info.Url);
+                y2bList.Add(item);
+            }
+        }
+
+        private void y2bList_MouseUp(object sender, MouseEventArgs e)
+        {
+            y2bList.Visible = false;
+            ItemMouseEventArgs me = (ItemMouseEventArgs)e;
+            
         }
 
         #endregion
+
     }
 }

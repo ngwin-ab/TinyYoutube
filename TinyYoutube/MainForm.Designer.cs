@@ -35,7 +35,7 @@
             // 
             // searchText
             // 
-            this.searchText.BackColor = System.Drawing.Color.White;
+            this.searchText.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.searchText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchText.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -65,6 +65,8 @@
             this.y2bList.Name = "y2bList";
             this.y2bList.Size = new System.Drawing.Size(280, 200);
             this.y2bList.TabIndex = 2;
+            this.y2bList.Visible = false;
+            this.y2bList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.y2bList_MouseUp);
             // 
             // MainForm
             // 
@@ -75,7 +77,7 @@
             this.Controls.Add(this.y2bList);
             this.Controls.Add(this.viewer);
             this.Controls.Add(this.searchText);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

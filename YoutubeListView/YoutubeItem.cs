@@ -57,6 +57,19 @@ namespace YoutubeListView
             }
         }
 
+        public string Duration
+        {
+            get
+            {
+                return durationLabel.Text;
+            }
+            set
+            {
+                durationLabel.Text = value;
+            }
+        }
+
+
         public int Index
         {
             get

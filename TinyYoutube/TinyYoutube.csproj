@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils.cs" />
     <Compile Include="Youtube\VideoInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

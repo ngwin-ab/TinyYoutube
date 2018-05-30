@@ -134,6 +134,20 @@ namespace TinyYoutube
             searcher = new YoutubeSearch();
             searcher.VideoUpdated += videoListUpdated;
 
+            viewer.DocumentCompleted += Viewer_DocumentCompleted;
+        }
+
+        private void Viewer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (viewer.Document != null)
+            {
+                viewer.Document.Click += Document_Click; ;
+            }
+        }
+
+        private void Document_Click(object sender, HtmlElementEventArgs e)
+        {
+            this.y2bList.Visible = false;
         }
 
         private void MainForm_Deactivate(object sender, EventArgs e)
@@ -178,7 +192,15 @@ namespace TinyYoutube
             ItemMouseEventArgs me = (ItemMouseEventArgs)e;
 
             string videoUrl = Utils.VIDEO_URL.Replace("%URL%", me.Url);
-            viewer.Url = new Uri(videoUrl, UriKind.Absolute);
+            loadUrl(videoUrl);
+        }
+
+        private void loadUrl(string url)
+        {
+            // this flag is to play the licensed songs
+            string additionalHeaders = "Referer : http://youtube.com";
+            viewer.Navigate(new Uri(url, UriKind.Absolute), "", null, additionalHeaders);
+            // viewer.Url = new Uri(videoUrl, UriKind.Absolute);
         }
 
         #endregion

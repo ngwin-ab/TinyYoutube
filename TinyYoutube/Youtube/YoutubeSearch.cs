@@ -33,10 +33,14 @@ namespace TinyYoutube.Youtube
             // call the search.list method to retrieve results matching the specified query term.
             var searchListResponse = await searchListRequest.ExecuteAsync();
 
+            if (searchListResponse == null) return;
+
             List<VideoInfo> videos = new List<VideoInfo>();
 
             foreach (var searchResult in searchListResponse.Items)
             {
+                if (searchResult == null || searchResult.Id == null) continue;
+
                 switch (searchResult.Id.Kind)
                 {
                     case "youtube#video":

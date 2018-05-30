@@ -119,5 +119,11 @@
   <ItemGroup>
     <Folder Include="Controls\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YoutubeListView\YoutubeListView.csproj">
+      <Project>{f9af336f-8ee5-42c3-abaa-a69f07eaba67}</Project>
+      <Name>YoutubeListView</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

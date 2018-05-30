@@ -66,12 +66,8 @@ namespace YoutubeListView
             InitializeMyComponent();
         }
 
-        #endregion
-
         private void InitializeMyComponent()
         {
-            base.DoubleClick += YoutubeListView_DoubleClick;
-            base.MouseUp += YoutubeListView_MouseUp;
             base.MouseWheel += MainPanel_MouseWheel;
             base.SizeChanged += YoutubeListView_SizeChanged;
         }
@@ -83,6 +79,10 @@ namespace YoutubeListView
             this.Height = actualListSize.Height;
             this.mainPanel.Height = actualListSize.Height;
         }
+
+        #endregion
+
+        #region Handlers
 
         private void MainPanel_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -111,6 +111,10 @@ namespace YoutubeListView
                 MouseUp(sender, e);
             }
         }
+
+        #endregion
+
+        #region Extra Functions
 
         public void Remove(YoutubeItem value)
         {
@@ -186,10 +190,13 @@ namespace YoutubeListView
 
         private void PrepareItemToAdd(YoutubeItem lItem)
         {
-            lItem.MouseUp += YoutubeListView_MouseUp;
             lItem.DoubleClick += YoutubeListView_DoubleClick;
+            lItem.MouseUp += YoutubeListView_MouseUp;
             lItem.Size = new System.Drawing.Size(this.itemWidth, this.itemHeight);
             lItem.Selected = false;
         }
+
+        #endregion
+
     }
 }

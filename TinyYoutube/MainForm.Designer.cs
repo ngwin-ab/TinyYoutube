@@ -30,6 +30,7 @@
         {
             this.searchText = new System.Windows.Forms.TextBox();
             this.viewer = new System.Windows.Forms.WebBrowser();
+            this.y2bList = new YoutubeListView.YoutubeListView();
             this.SuspendLayout();
             // 
             // searchText
@@ -56,12 +57,22 @@
             this.viewer.Size = new System.Drawing.Size(360, 200);
             this.viewer.TabIndex = 1;
             // 
+            // y2bList
+            // 
+            this.y2bList.BackColor = System.Drawing.Color.White;
+            this.y2bList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.y2bList.Location = new System.Drawing.Point(0, 20);
+            this.y2bList.Name = "y2bList";
+            this.y2bList.Size = new System.Drawing.Size(280, 200);
+            this.y2bList.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
+            this.Controls.Add(this.y2bList);
             this.Controls.Add(this.viewer);
             this.Controls.Add(this.searchText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -81,6 +92,7 @@
 
         private System.Windows.Forms.TextBox searchText;
         private System.Windows.Forms.WebBrowser viewer;
+        private YoutubeListView.YoutubeListView y2bList;
     }
 }
 

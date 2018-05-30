@@ -17,6 +17,8 @@ namespace YoutubeListView
         public new event EventHandler DoubleClick = null;
         public new event MouseEventHandler MouseUp = null;
 
+        private int index;
+        private string url;
         private bool selected = false;
 
         public System.Drawing.Image Image
@@ -55,6 +57,30 @@ namespace YoutubeListView
             }
         }
 
+        public int Index
+        {
+            get
+            {
+                return this.index;
+            }
+            set
+            {
+                this.index = value;
+            }
+        }
+
+        public string Url
+        {
+            get
+            {
+                return this.url;
+            }
+            set
+            {
+                this.url = value;
+            }
+        }
+
         public bool Selected
         {
             get
@@ -77,6 +103,8 @@ namespace YoutubeListView
 
         #endregion
 
+        #region Item Initialization
+
         public YoutubeItem()
         {
             InitializeComponent();
@@ -86,9 +114,14 @@ namespace YoutubeListView
 
         private void InitializeMyComponent()
         {
-            base.MouseUp += YoutubeItem_MouseUp;
-            base.DoubleClick += YoutubeItem_DoubleClick;
+            this.titleLabel.MouseUp += YoutubeItem_MouseUp;
+            this.descLabel.MouseUp += YoutubeItem_MouseUp;
+            this.previewer.MouseUp += YoutubeItem_MouseUp;
         }
+
+        #endregion
+
+        #region Handlers
 
         private void YoutubeItem_DoubleClick(object sender, EventArgs e)
         {
@@ -102,8 +135,13 @@ namespace YoutubeListView
         {
             if (MouseUp != null)
             {
-                MouseUp(sender, e);
+                ItemMouseEventArgs me = new ItemMouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta);
+                me.Index = this.index;
+                me.Url = this.url;
+                MouseUp(sender, me);
             }
         }
+
+        #endregion
     }
 }

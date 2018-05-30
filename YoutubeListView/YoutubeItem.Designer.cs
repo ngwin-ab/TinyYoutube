@@ -91,6 +91,7 @@
             this.Controls.Add(this.durationLabel);
             this.Controls.Add(this.descLabel);
             this.Controls.Add(this.previewer);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "YoutubeItem";
             this.Size = new System.Drawing.Size(300, 30);
             ((System.ComponentModel.ISupportInitialize)(this.previewer)).EndInit();

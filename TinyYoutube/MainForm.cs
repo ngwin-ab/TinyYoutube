@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using TinyYoutube.Youtube;
 using YoutubeListView;
@@ -20,6 +21,9 @@ namespace TinyYoutube
         #region Variables
 
         YoutubeSearch searcher;
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
         #endregion
 
@@ -135,6 +139,8 @@ namespace TinyYoutube
             searcher.VideoUpdated += videoListUpdated;
 
             viewer.DocumentCompleted += Viewer_DocumentCompleted;
+
+            SendMessage(this.searchText.Handle, 0x1501, 1, "keywords");
         }
 
         private void Viewer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

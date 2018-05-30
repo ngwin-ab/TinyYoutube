@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.searchText = new System.Windows.Forms.TextBox();
             this.viewer = new System.Windows.Forms.WebBrowser();
+            this.closeLabel = new System.Windows.Forms.Label();
             this.y2bList = new YoutubeListView.YoutubeListView();
             this.SuspendLayout();
             // 
@@ -57,6 +59,18 @@
             this.viewer.Size = new System.Drawing.Size(360, 200);
             this.viewer.TabIndex = 1;
             // 
+            // closeLabel
+            // 
+            this.closeLabel.AutoSize = true;
+            this.closeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeLabel.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeLabel.Location = new System.Drawing.Point(344, 2);
+            this.closeLabel.Name = "closeLabel";
+            this.closeLabel.Size = new System.Drawing.Size(13, 15);
+            this.closeLabel.TabIndex = 3;
+            this.closeLabel.Text = "x";
+            this.closeLabel.Click += new System.EventHandler(this.closeLabel_Click);
+            // 
             // y2bList
             // 
             this.y2bList.BackColor = System.Drawing.Color.White;
@@ -74,10 +88,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
+            this.Controls.Add(this.closeLabel);
             this.Controls.Add(this.y2bList);
             this.Controls.Add(this.viewer);
             this.Controls.Add(this.searchText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -95,6 +111,7 @@
         private System.Windows.Forms.TextBox searchText;
         private System.Windows.Forms.WebBrowser viewer;
         private YoutubeListView.YoutubeListView y2bList;
+        private System.Windows.Forms.Label closeLabel;
     }
 }
 

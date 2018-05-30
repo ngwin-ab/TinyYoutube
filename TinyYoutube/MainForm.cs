@@ -166,6 +166,11 @@ namespace TinyYoutube
             this.Opacity = 1;
         }
 
+        private void closeLabel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         #endregion
 
         #region Search Handler

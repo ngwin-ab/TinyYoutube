@@ -43,6 +43,7 @@ namespace TinyYoutube.Youtube
                         {
                             videos.Add(new VideoInfo()
                             {
+                                Id = searchResult.Id.VideoId,
                                 Title = searchResult.Snippet.Title,
                                 Author = searchResult.Snippet.ChannelTitle,
                                 Description = searchResult.Snippet.Description,

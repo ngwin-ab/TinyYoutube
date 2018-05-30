@@ -166,6 +166,7 @@ namespace TinyYoutube
                 item.Title = info.Title;
                 item.Description = info.Description;
                 item.Duration = info.Duration;
+                item.Url = info.Id;
                 // item.Image = Utils.readImageFromUrl(info.Url);
                 y2bList.Add(item);
             }
@@ -175,7 +176,9 @@ namespace TinyYoutube
         {
             y2bList.Visible = false;
             ItemMouseEventArgs me = (ItemMouseEventArgs)e;
-            
+
+            string videoUrl = Utils.VIDEO_URL.Replace("%URL%", me.Url);
+            viewer.Url = new Uri(videoUrl, UriKind.Absolute);
         }
 
         #endregion

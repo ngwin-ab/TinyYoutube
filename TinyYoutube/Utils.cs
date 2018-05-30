@@ -13,6 +13,10 @@ namespace TinyYoutube
     {
         #region Variables
 
+        public const string VIDEO_PARAM = "?autoplay=1&cc_load_policy=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1";
+
+        public const string VIDEO_URL = "https://www.youtube.com/embed/%URL%?autoplay=1&cc_load_policy=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1";
+
         static WebClient wc = new WebClient();
 
         #endregion

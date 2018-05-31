@@ -38,9 +38,12 @@
             // previewer
             // 
             this.previewer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.Location = new System.Drawing.Point(1, 1);
+            this.previewer.Margin = new System.Windows.Forms.Padding(5);
             this.previewer.Name = "previewer";
-            this.previewer.Size = new System.Drawing.Size(50, 30);
+            this.previewer.Padding = new System.Windows.Forms.Padding(3);
+            this.previewer.Size = new System.Drawing.Size(48, 28);
+            this.previewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.previewer.TabIndex = 0;
             this.previewer.TabStop = false;
             // 
@@ -50,9 +53,9 @@
             this.descLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.descLabel.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descLabel.ForeColor = System.Drawing.Color.Gray;
-            this.descLabel.Location = new System.Drawing.Point(50, 14);
+            this.descLabel.Location = new System.Drawing.Point(49, 14);
             this.descLabel.Name = "descLabel";
-            this.descLabel.Size = new System.Drawing.Size(250, 16);
+            this.descLabel.Size = new System.Drawing.Size(250, 15);
             this.descLabel.TabIndex = 2;
             this.descLabel.Text = "The Description";
             // 
@@ -62,7 +65,7 @@
             this.durationLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.durationLabel.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.durationLabel.ForeColor = System.Drawing.Color.Gray;
-            this.durationLabel.Location = new System.Drawing.Point(272, 0);
+            this.durationLabel.Location = new System.Drawing.Point(271, 1);
             this.durationLabel.Name = "durationLabel";
             this.durationLabel.Size = new System.Drawing.Size(28, 12);
             this.durationLabel.TabIndex = 3;
@@ -75,9 +78,9 @@
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleLabel.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.titleLabel.Location = new System.Drawing.Point(50, 0);
+            this.titleLabel.Location = new System.Drawing.Point(49, 1);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(222, 15);
+            this.titleLabel.Size = new System.Drawing.Size(222, 12);
             this.titleLabel.TabIndex = 4;
             this.titleLabel.Text = "The Main Title";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -93,6 +96,7 @@
             this.Controls.Add(this.previewer);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "YoutubeItem";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.Size = new System.Drawing.Size(300, 30);
             ((System.ComponentModel.ISupportInitialize)(this.previewer)).EndInit();
             this.ResumeLayout(false);

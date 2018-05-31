@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 using TinyYoutube.Youtube;
 using YoutubeListView;
@@ -24,6 +25,9 @@ namespace TinyYoutube
 
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
+
+        long lastTextTime = 0;
+        BackgroundWorker worker;
 
         #endregion
 
@@ -135,12 +139,20 @@ namespace TinyYoutube
             var screen = Screen.FromPoint(this.Location);
             this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Bottom - this.Height);
 
+            // setup the search and events when video list and thumb images 
+            // are updated
             searcher = new YoutubeSearch();
             searcher.VideoUpdated += videoListUpdated;
+            searcher.ImageUpdated += imageUpdated;
 
+            // detects when mouse is clicked over the surface of 
+            // the web browser
             viewer.DocumentCompleted += Viewer_DocumentCompleted;
-
+            
             SendMessage(this.searchText.Handle, 0x1501, 1, "keywords");
+
+            // start the clock to wait for the searching
+            runSearchThread();
         }
 
         private void Viewer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -158,7 +170,11 @@ namespace TinyYoutube
 
         private void MainForm_Deactivate(object sender, EventArgs e)
         {
-            this.Opacity = 0.5;
+            try
+            {
+                this.Opacity = 0.5;
+            }
+            catch { }
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
@@ -175,14 +191,46 @@ namespace TinyYoutube
 
         #region Search Handler
 
-        private async void searchText_TextChangedAsync(object sender, EventArgs e)
+        /// <summary>
+        /// to start the clock, this clock is to check whether 
+        /// user stops editing 
+        /// </summary>
+        private void runSearchThread()
+        {
+            worker = new BackgroundWorker();
+            worker.DoWork += Worker_DoWork;
+            worker.ProgressChanged += Worker_ProgressChanged;
+            worker.WorkerReportsProgress = true;
+            worker.RunWorkerAsync();
+        }
+
+        private async void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             y2bList.Visible = true;
             var searchTextStr = searchText.Text.Trim().ToLower();
             await searcher.search(searchTextStr, 20);
         }
+        
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                double secDiff = new TimeSpan(DateTime.Now.Ticks - lastTextTime).TotalSeconds;
+                if (lastTextTime > 0 && secDiff >= 1)
+                {
+                    worker.ReportProgress(0);
+                    lastTextTime = 0;
+                }
+                Thread.Sleep(500);
+            }
+        }
 
-        void videoListUpdated(List<VideoInfo> videos)
+        private void searchText_TextChangedAsync(object sender, EventArgs e)
+        {
+            lastTextTime = DateTime.Now.Ticks;
+        }
+
+        async void videoListUpdated(List<VideoInfo> videos)
         {
             y2bList.Clear();
             foreach (VideoInfo info in videos)
@@ -190,11 +238,17 @@ namespace TinyYoutube
                 YoutubeItem item = new YoutubeItem();
                 item.Title = info.Title;
                 item.Description = info.Description;
-                item.Duration = info.Duration;
+                item.Duration = info.PublishedAt; // info.Duration;
                 item.Url = info.Id;
-                // item.Image = Utils.readImageFromUrl(info.Url);
+                // load the thumb image in async mode
+                await searcher.readImageFromUrl(info.Thumbnail, item);
                 y2bList.Add(item);
             }
+        }
+
+        async void imageUpdated(Image srcImage, YoutubeItem item)
+        {
+            item.Image = srcImage;
         }
 
         private void y2bList_MouseUp(object sender, MouseEventArgs e)

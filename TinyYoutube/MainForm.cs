@@ -206,7 +206,6 @@ namespace TinyYoutube
 
         private async void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            y2bList.Visible = true;
             var searchTextStr = searchText.Text.Trim().ToLower();
             await searcher.search(searchTextStr, 20);
         }
@@ -244,6 +243,7 @@ namespace TinyYoutube
                 await searcher.readImageFromUrl(info.Thumbnail, item);
                 y2bList.Add(item);
             }
+            y2bList.Visible = true;
         }
 
         async void imageUpdated(Image srcImage, YoutubeItem item)

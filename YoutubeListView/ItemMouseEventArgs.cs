@@ -38,7 +38,7 @@ namespace YoutubeListView
 
         public ItemMouseEventArgs(MouseButtons buttons, int click, int x, int y, int delta) : base(buttons, click, x, y, delta)
         {
-            this.index = index;
+            // this.index = index;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace TinyYoutube.Youtube
 {
     public delegate void VideoUpdateHandler(List<VideoInfo> videos);
     public delegate void ImageUpdateHandler(Image srcImage, YoutubeItem item);
+    public delegate void CommentUpdateHandler(List<Comment> comments);
 
     class YoutubeSearch
     {
@@ -23,6 +24,7 @@ namespace TinyYoutube.Youtube
 
         public event VideoUpdateHandler VideoUpdated;
         public event ImageUpdateHandler ImageUpdated;
+        public event CommentUpdateHandler CommentUpdated;
 
         YouTubeService youtubeService;
         WebClient wc = new WebClient();
@@ -45,8 +47,19 @@ namespace TinyYoutube.Youtube
             var commentThreadsRequest = youtubeService.CommentThreads.List("replies,snippet");
             commentThreadsRequest.VideoId = youtubeId; 
             commentThreadsRequest.MaxResults = maxResult; 
-            var response = await commentThreadsRequest.ExecuteAsync();
+            var commentListResponse = await commentThreadsRequest.ExecuteAsync();
 
+            if (commentListResponse == null) return;
+
+            List<Comment> comments = new List<Comment>();
+
+            foreach (var comment in commentListResponse.Items)
+            {
+                if (comment == null) continue;
+
+            }
+
+            CommentUpdated(comments);
         }
 
         public async Task search(string query, int maxResult)

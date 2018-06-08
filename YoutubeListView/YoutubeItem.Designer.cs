@@ -41,7 +41,7 @@
             this.previewer.Location = new System.Drawing.Point(1, 1);
             this.previewer.Margin = new System.Windows.Forms.Padding(5);
             this.previewer.Name = "previewer";
-            this.previewer.Padding = new System.Windows.Forms.Padding(3);
+            this.previewer.Padding = new System.Windows.Forms.Padding(1);
             this.previewer.Size = new System.Drawing.Size(48, 28);
             this.previewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.previewer.TabIndex = 0;

@@ -27,6 +27,7 @@ namespace TinyYoutube
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
         long lastTextTime = 0;
+        string videoId;
         BackgroundWorker worker;
 
         #endregion
@@ -144,6 +145,7 @@ namespace TinyYoutube
             searcher = new YoutubeSearch();
             searcher.VideoUpdated += videoListUpdated;
             searcher.ImageUpdated += imageUpdated;
+            searcher.CommentUpdated += commentUpdated;
 
             // detects when mouse is clicked over the surface of 
             // the web browser
@@ -190,6 +192,7 @@ namespace TinyYoutube
         private void commentLabel_Click(object sender, EventArgs e)
         {
             // load comments
+            runCommentSearchThread();
         }
 
         #endregion
@@ -229,6 +232,11 @@ namespace TinyYoutube
             }
         }
 
+        async void runCommentSearchThread()
+        {
+            await searcher.getComments(this.videoId, 50);
+        }
+
         private void searchText_TextChangedAsync(object sender, EventArgs e)
         {
             lastTextTime = DateTime.Now.Ticks;
@@ -244,6 +252,7 @@ namespace TinyYoutube
                 item.Description = info.Description;
                 item.Duration = info.PublishedAt; // info.Duration;
                 item.Url = info.Id;
+                
                 // load the thumb image in async mode
                 await searcher.readImageFromUrl(info.Thumbnail, item);
                 y2bList.Add(item);
@@ -256,12 +265,17 @@ namespace TinyYoutube
             item.Image = srcImage;
         }
 
+        async void commentUpdated(List<Comment> comments)
+        {
+
+        }
+
         private void y2bList_MouseUp(object sender, MouseEventArgs e)
         {
             y2bList.Visible = false;
             ItemMouseEventArgs me = (ItemMouseEventArgs)e;
-
-            string videoUrl = Utils.VIDEO_URL.Replace("%URL%", me.Url);
+            this.videoId = me.Url;
+            string videoUrl = Utils.VIDEO_URL.Replace("%VIDEO_ID%", this.videoId);
             loadUrl(videoUrl);
         }
 

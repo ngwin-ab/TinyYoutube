@@ -84,6 +84,7 @@
             // 
             // commentLabel
             // 
+            this.commentLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.commentLabel.Image = global::TinyYoutube.Properties.Resources.icons8_topic_16;
             this.commentLabel.Location = new System.Drawing.Point(321, 1);
             this.commentLabel.Name = "commentLabel";

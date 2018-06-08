@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>if_youtube_317714.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\if_youtube_317714.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Apis, Version=1.33.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utils.cs" />
+    <Compile Include="Youtube\Comment.cs" />
     <Compile Include="Youtube\VideoInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -131,7 +132,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="if_youtube_317714.ico" />
+    <Content Include="Resources\if_youtube_317714.ico" />
     <None Include="Resources\icons8-multiply-16.png" />
     <None Include="Resources\icons8-topic-16.png" />
   </ItemGroup>

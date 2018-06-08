@@ -40,6 +40,15 @@ namespace TinyYoutube.Youtube
             });
         }
 
+        public async Task getComments(string youtubeId, int maxResult)
+        {
+            var commentThreadsRequest = youtubeService.CommentThreads.List("replies,snippet");
+            commentThreadsRequest.VideoId = youtubeId; 
+            commentThreadsRequest.MaxResults = maxResult; 
+            var response = await commentThreadsRequest.ExecuteAsync();
+
+        }
+
         public async Task search(string query, int maxResult)
         {
             var searchListRequest = youtubeService.Search.List("snippet");

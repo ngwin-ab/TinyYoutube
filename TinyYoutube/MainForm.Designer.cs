@@ -33,6 +33,7 @@
             this.viewer = new System.Windows.Forms.WebBrowser();
             this.closeLabel = new System.Windows.Forms.Label();
             this.y2bList = new YoutubeListView.YoutubeListView();
+            this.commentLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // searchText
@@ -61,14 +62,13 @@
             // 
             // closeLabel
             // 
-            this.closeLabel.AutoSize = true;
             this.closeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeLabel.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeLabel.Image = global::TinyYoutube.Properties.Resources.icons8_multiply_16;
             this.closeLabel.Location = new System.Drawing.Point(344, 2);
             this.closeLabel.Name = "closeLabel";
             this.closeLabel.Size = new System.Drawing.Size(13, 15);
             this.closeLabel.TabIndex = 3;
-            this.closeLabel.Text = "x";
             this.closeLabel.Click += new System.EventHandler(this.closeLabel_Click);
             // 
             // y2bList
@@ -82,12 +82,22 @@
             this.y2bList.Visible = false;
             this.y2bList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.y2bList_MouseUp);
             // 
+            // commentLabel
+            // 
+            this.commentLabel.Image = global::TinyYoutube.Properties.Resources.icons8_topic_16;
+            this.commentLabel.Location = new System.Drawing.Point(321, 1);
+            this.commentLabel.Name = "commentLabel";
+            this.commentLabel.Size = new System.Drawing.Size(18, 18);
+            this.commentLabel.TabIndex = 7;
+            this.commentLabel.Click += new System.EventHandler(this.commentLabel_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
+            this.Controls.Add(this.commentLabel);
             this.Controls.Add(this.closeLabel);
             this.Controls.Add(this.y2bList);
             this.Controls.Add(this.viewer);
@@ -112,6 +122,7 @@
         private System.Windows.Forms.WebBrowser viewer;
         private YoutubeListView.YoutubeListView y2bList;
         private System.Windows.Forms.Label closeLabel;
+        private System.Windows.Forms.Label commentLabel;
     }
 }
 

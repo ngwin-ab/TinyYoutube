@@ -187,6 +187,11 @@ namespace TinyYoutube
             Application.Exit();
         }
 
+        private void commentLabel_Click(object sender, EventArgs e)
+        {
+            // load comments
+        }
+
         #endregion
 
         #region Search Handler
@@ -270,5 +275,6 @@ namespace TinyYoutube
 
         #endregion
 
+        
     }
 }

@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.searchText = new System.Windows.Forms.TextBox();
             this.viewer = new System.Windows.Forms.WebBrowser();
-            this.closeLabel = new System.Windows.Forms.Label();
             this.y2bList = new YoutubeListView.YoutubeListView();
             this.commentLabel = new System.Windows.Forms.Label();
+            this.closeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // searchText
@@ -60,17 +60,6 @@
             this.viewer.Size = new System.Drawing.Size(360, 200);
             this.viewer.TabIndex = 1;
             // 
-            // closeLabel
-            // 
-            this.closeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeLabel.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeLabel.Image = global::TinyYoutube.Properties.Resources.icons8_multiply_16;
-            this.closeLabel.Location = new System.Drawing.Point(344, 2);
-            this.closeLabel.Name = "closeLabel";
-            this.closeLabel.Size = new System.Drawing.Size(13, 15);
-            this.closeLabel.TabIndex = 3;
-            this.closeLabel.Click += new System.EventHandler(this.closeLabel_Click);
-            // 
             // y2bList
             // 
             this.y2bList.BackColor = System.Drawing.Color.White;
@@ -85,12 +74,23 @@
             // commentLabel
             // 
             this.commentLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.commentLabel.Image = global::TinyYoutube.Properties.Resources.icons8_topic_16;
+            this.commentLabel.Image = global::TinyYoutube.Properties.Resources.icons8_topic_12;
             this.commentLabel.Location = new System.Drawing.Point(321, 1);
             this.commentLabel.Name = "commentLabel";
             this.commentLabel.Size = new System.Drawing.Size(18, 18);
             this.commentLabel.TabIndex = 7;
             this.commentLabel.Click += new System.EventHandler(this.commentLabel_Click);
+            // 
+            // closeLabel
+            // 
+            this.closeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeLabel.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeLabel.Image = global::TinyYoutube.Properties.Resources.icons8_multiply_16;
+            this.closeLabel.Location = new System.Drawing.Point(344, 2);
+            this.closeLabel.Name = "closeLabel";
+            this.closeLabel.Size = new System.Drawing.Size(13, 15);
+            this.closeLabel.TabIndex = 3;
+            this.closeLabel.Click += new System.EventHandler(this.closeLabel_Click);
             // 
             // MainForm
             // 

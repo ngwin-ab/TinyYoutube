@@ -234,7 +234,10 @@ namespace TinyYoutube
 
         async void runCommentSearchThread()
         {
-            await searcher.getComments(this.videoId, 50);
+            if (!this.videoId.Equals(""))
+            {
+                await searcher.getComments(this.videoId, 50);
+            }
         }
 
         private void searchText_TextChangedAsync(object sender, EventArgs e)

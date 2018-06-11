@@ -125,6 +125,18 @@ namespace YoutubeListView
             InitializeMyComponent();
         }
 
+        public YoutubeItem(Boolean hasImage)
+        {
+            InitializeComponent();
+
+            InitializeMyComponent();
+
+            if (!hasImage)
+            {
+                this.previewer.Width = 0;
+            }
+        }
+
         private void InitializeMyComponent()
         {
             this.titleLabel.MouseUp += YoutubeItem_MouseUp;

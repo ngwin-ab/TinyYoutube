@@ -57,6 +57,23 @@ namespace TinyYoutube.Youtube
             {
                 if (comment == null) continue;
 
+                switch(comment.Kind)
+                {
+                    case "youtube#commentThread":
+                        {
+                            comments.Add(new Comment()
+                            {
+                                authorName = comment.Snippet.TopLevelComment.Snippet.AuthorDisplayName,
+                                authorImageUrl = comment.Snippet.TopLevelComment.Snippet.AuthorProfileImageUrl,
+                                comment = comment.Snippet.TopLevelComment.Snippet.TextOriginal,
+                                time = comment.Snippet.TopLevelComment.Snippet.UpdatedAt.Value.Month + "/" +
+                                        comment.Snippet.TopLevelComment.Snippet.UpdatedAt.Value.Day + "/" +
+                                        comment.Snippet.TopLevelComment.Snippet.UpdatedAt.Value.Year,
+                                numberOfLikes = (long)comment.Snippet.TopLevelComment.Snippet.LikeCount
+                            });
+                            break;
+                        }
+                }
             }
 
             CommentUpdated(comments);

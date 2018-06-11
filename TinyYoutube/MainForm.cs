@@ -27,7 +27,7 @@ namespace TinyYoutube
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
         long lastTextTime = 0;
-        string videoId;
+        string videoId = "";
         BackgroundWorker worker;
 
         #endregion
@@ -270,7 +270,16 @@ namespace TinyYoutube
 
         async void commentUpdated(List<Comment> comments)
         {
-
+            y2bList.Clear();
+            foreach (Comment cmt in comments)
+            {
+                YoutubeItem item = new YoutubeItem(false);
+                item.Title = cmt.authorName;
+                item.Description = cmt.comment;
+                item.Duration = cmt.time;
+                y2bList.Add(item);
+            }
+            y2bList.Visible = true;
         }
 
         private void y2bList_MouseUp(object sender, MouseEventArgs e)

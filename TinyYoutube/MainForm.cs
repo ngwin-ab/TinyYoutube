@@ -187,12 +187,12 @@ namespace TinyYoutube
         private void searchText_MouseDown(object sender, MouseEventArgs e)
         {
             // switch the visible mode ON/OFF
-            y2bList.Visible = !y2bList.Visible;
+            // y2bList.Visible = !y2bList.Visible;
 
-            //if (y2bList.Visible)
-            //{
-            //    y2bList.Visible = false;
-            //}
+            if (y2bList.Visible)
+            {
+                y2bList.Visible = false;
+            }
         }
 
         private void closeLabel_Click(object sender, EventArgs e)

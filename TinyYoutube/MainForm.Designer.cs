@@ -49,6 +49,7 @@
             this.searchText.Size = new System.Drawing.Size(360, 20);
             this.searchText.TabIndex = 0;
             this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChangedAsync);
+            this.searchText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.searchText_MouseDown);
             // 
             // viewer
             // 

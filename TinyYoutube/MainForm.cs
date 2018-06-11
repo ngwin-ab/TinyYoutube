@@ -184,6 +184,17 @@ namespace TinyYoutube
             this.Opacity = 1;
         }
 
+        private void searchText_MouseDown(object sender, MouseEventArgs e)
+        {
+            // switch the visible mode ON/OFF
+            y2bList.Visible = !y2bList.Visible;
+
+            //if (y2bList.Visible)
+            //{
+            //    y2bList.Visible = false;
+            //}
+        }
+
         private void closeLabel_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -234,7 +245,7 @@ namespace TinyYoutube
 
         async void runCommentSearchThread()
         {
-            if (!this.videoId.Equals(""))
+            if (this.videoId != null && !this.videoId.Equals(""))
             {
                 await searcher.getComments(this.videoId, 50);
             }
@@ -301,6 +312,5 @@ namespace TinyYoutube
 
         #endregion
 
-        
     }
 }

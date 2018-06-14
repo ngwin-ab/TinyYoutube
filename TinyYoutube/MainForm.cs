@@ -19,6 +19,8 @@ namespace TinyYoutube
 {
     public partial class MainForm : Form
     {
+        // todo June 14: prepare to add big-size screen
+
         #region Variables
 
         YoutubeSearch searcher;

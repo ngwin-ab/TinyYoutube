@@ -208,6 +208,11 @@ namespace TinyYoutube
             runCommentSearchThread();
         }
 
+        private void zoomInOutLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region Search Handler

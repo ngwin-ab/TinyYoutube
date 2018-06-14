@@ -32,6 +32,7 @@
             this.searchText = new System.Windows.Forms.TextBox();
             this.viewer = new System.Windows.Forms.WebBrowser();
             this.y2bList = new YoutubeListView.YoutubeListView();
+            this.zoomInOutLabel = new System.Windows.Forms.Label();
             this.commentLabel = new System.Windows.Forms.Label();
             this.closeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -72,6 +73,16 @@
             this.y2bList.Visible = false;
             this.y2bList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.y2bList_MouseUp);
             // 
+            // zoomInOutLabel
+            // 
+            this.zoomInOutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.zoomInOutLabel.Image = global::TinyYoutube.Properties.Resources.icons8_page_12;
+            this.zoomInOutLabel.Location = new System.Drawing.Point(297, 1);
+            this.zoomInOutLabel.Name = "zoomInOutLabel";
+            this.zoomInOutLabel.Size = new System.Drawing.Size(18, 18);
+            this.zoomInOutLabel.TabIndex = 8;
+            this.zoomInOutLabel.Click += new System.EventHandler(this.zoomInOutLabel_Click);
+            // 
             // commentLabel
             // 
             this.commentLabel.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -99,6 +110,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
             this.ControlBox = false;
+            this.Controls.Add(this.zoomInOutLabel);
             this.Controls.Add(this.commentLabel);
             this.Controls.Add(this.closeLabel);
             this.Controls.Add(this.y2bList);
@@ -125,6 +137,7 @@
         private YoutubeListView.YoutubeListView y2bList;
         private System.Windows.Forms.Label closeLabel;
         private System.Windows.Forms.Label commentLabel;
+        private System.Windows.Forms.Label zoomInOutLabel;
     }
 }
 

@@ -135,6 +135,7 @@
     <None Include="Resources\icons8-topic-12_2.png" />
     <None Include="Resources\icons8-chat-bubble-12.png" />
     <None Include="Resources\icons8-topic-12.png" />
+    <None Include="Resources\icons8-page-12.png" />
     <Content Include="Resources\if_youtube_317714.ico" />
     <None Include="Resources\icons8-multiply-16.png" />
   </ItemGroup>

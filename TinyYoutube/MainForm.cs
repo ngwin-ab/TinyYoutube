@@ -211,6 +211,10 @@ namespace TinyYoutube
         private void zoomInOutLabel_Click(object sender, EventArgs e)
         {
             // adding joom 
+            this.Width = this.Width * 3 / 2;
+            this.Height = this.Height * 3 / 2;
+            var screen = Screen.FromPoint(this.Location);
+            this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Bottom - this.Height);
         }
 
         #endregion
